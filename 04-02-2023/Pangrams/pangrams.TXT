@@ -1,0 +1,39 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        char c[]={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
+        
+        List<Character> list=new ArrayList<>();
+        for(int h=0;h<26;h++)
+        {
+            list.add(c[h]);
+        }
+        String s1=s.replaceAll("\\s","");
+        String s2=s1.toLowerCase();
+        char[] v=new char[s2.length()];
+        for(int i=0;i<s2.length();i++)
+        {
+            v[i]=s2.charAt(i);
+        }
+        Arrays.sort(v);
+        List<Character> n=new ArrayList<>();
+        for(int j=0;j<s2.length()-1;j++)
+        {
+            if(v[j]!=v[j+1])
+            {
+                n.add(v[j]);
+            }
+        }
+        n.add(v[s2.length()-1]);
+        if(list.equals(n))
+        {
+            System.out.println("pangram");
+        }
+        else
+        {
+            System.out.println("not pangram");
+        }
+    }
+}
